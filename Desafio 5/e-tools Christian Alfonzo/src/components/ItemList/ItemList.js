@@ -1,24 +1,15 @@
 import Item from '../Item/Item'
 import './ItemList.css'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const ItemList = () => {
-    const [products, setProducts] = useState([]);
-
-
-    useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then((response) => response.json())
-            .then((json) => setProducts((json)));
-    }, []);
-    console.log('DATA: ', products)
+const ItemList = (datas) => {
 
   return (
     <div>
         <h1>Products</h1>
         <div className='Items'>
-            {products.map((product) => (
-                <Item key={product.id} data={product}/>
+            {datas.data.map((data) => (
+                <Item key={data.id} data={data}/>
             ))}
         </div>
     </div>
